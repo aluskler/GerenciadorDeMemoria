@@ -77,17 +77,19 @@ export class MemoriaManager {
   private modoBestFit(process: processo): void {
     let melhorInicio = -1;
     let menorTamanho = Number.MAX_SAFE_INTEGER;
-
+    let contador = 0
     for (let i = 0; i < this.memoriaFisica.length; i++) {
       let j = i;
       while (!this.memoriaFisica[j] && j < this.memoriaFisica.length) {
         j++;
+        contador++
       }
       let tamanho = j - i;
-      if (tamanho >= process.getsize && tamanho < menorTamanho) {
+      if (tamanho >= process.getsize && tamanho < menorTamanho && contador < menorTamanho) {
         melhorInicio = i;
         menorTamanho = tamanho;
         i = j - 1;
+        contador=0
       }
     }
 

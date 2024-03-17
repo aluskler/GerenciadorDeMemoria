@@ -9,7 +9,7 @@ export class SO {
   private CpuManager: cpumanager;
 
   constructor() {
-    this.MemoriaManager = new MemoriaManager(estrategia.FIRST_FIT); /** */
+    this.MemoriaManager = new MemoriaManager(estrategia.BEST_FIT); /** */
     this.CpuManager = new cpumanager();
   }
   public chamada(type: TipoDeChamada, process: processo): processo | null {
